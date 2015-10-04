@@ -1,22 +1,21 @@
-'use strict';
-var path = require('path');
-var test = require('ava');
-var readChunk = require('read-chunk');
-var isAvi = require('../');
+import path from 'path';
+import test from 'ava';
+import readChunk from 'read-chunk';
+import isAvi from '../';
 
-test('should detect .AVI files', function (t) {
+test('should detect .AVI files', t => {
 	t.plan(2);
 
-	readChunk(path.join(__dirname, 'fixture', 'fixture.avi'), 0, 11, function (err, buf) {
+	readChunk(path.join(__dirname, 'fixture', 'fixture.avi'), 0, 11, (err, buf) => {
 		t.error(err);
 		t.true(isAvi(buf));
 	});
 });
 
-test('should not give false positives', function (t) {
+test('should not give false positives', t => {
 	t.plan(2);
 
-	readChunk(path.join(__dirname, 'fixture', 'fixture.mp3'), 0, 11, function (err, buf) {
+	readChunk(path.join(__dirname, 'fixture', 'fixture.mp3'), 0, 11, (err, buf) => {
 		t.error(err);
 		t.false(isAvi(buf));
 	});
