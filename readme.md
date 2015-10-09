@@ -13,8 +13,8 @@ $ npm install --save is-avi
 ## Usage
 
 ```js
-var isAvi = require('is-avi');
-var read = require('fs').readFileSync;
+const isAvi = require('is-avi');
+const read = require('fs').readFileSync;
 
 isAvi(read('foo.avi'));
 //=> true
